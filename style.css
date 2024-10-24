@@ -1,0 +1,193 @@
+html,body{
+    padding: 0px;
+    z-index: 3;
+    margin: 0px;
+    height:50%;
+    width: 100%;
+}
+
+.hidden{
+    opacity: 0;
+}
+.heading{
+    font-family:'Trebuchet MS', sans-serif;
+    background: linear-gradient(to left,rgb(221, 154, 9), rgb(228, 30, 30));
+    color: rgb(0, 0, 0);
+    height: 80px;
+    position: relative;
+    top: -22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+h1{
+    padding: 16px;
+    position: relative;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+}
+.fade-in{
+    opacity: 1;
+}
+.extra{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Agency FB';
+    color: rgb(177, 47, 0);
+    background-color: white;
+    background: linear-gradient(white,white, rgb(255, 151, 113));
+}
+.extra2{
+    height: 100%;
+    opacity: 1;
+    width: 100%;
+    background: linear-gradient(rgb(255, 151, 113), orangered);
+    color: aliceblue;
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    overflow: auto;
+}
+#bugfix{
+    background: orangered;
+}
+#main::after{
+    content: "URL SHORTENER";
+    position: absolute;
+    display: flex;
+    top: 21%;
+    color: rgb(255, 255, 255);
+}
+#next{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#long_url{
+    justify-content: center;
+    width: 25%;
+    height: 50px;
+    margin: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    border: 2px solid rgb(175, 28, 28);
+    font-family: 'Trebuchet MS', sans-serif;
+    position: relative;
+    top: 15%;
+}
+#formhead{
+    display: flex;
+    justify-content: center;
+    height: 50%;
+    width: 100%;
+    font-family:'Trebuchet MS', sans-serif;
+}
+#long_url:focus{
+    border-color: rgb(237, 51, 116);
+    outline: none;
+    transition: 200ms;
+    box-shadow: 0 0 5px 2px rgba(255,165,0,0.7);
+    transition: box-shadow 0.3s ease;
+}
+#submit{
+    position: relative;
+    background: linear-gradient(to left, orange, rgb(254, 55, 55));
+    color: aliceblue;
+    bottom: -22px;
+    border-radius: 5px;
+    height: 50px;
+    cursor: pointer;
+    border: none;
+    font-family:'Trebuchet MS', sans-serif;
+}
+#submit:hover{
+    background: linear-gradient(to left, rgb(254,55,55),rgb(254,55,55), orange);
+    transition: 250ms;
+    color: rgb(255, 243, 70);
+}
+#output{
+    font-family:'Trebuchet MS', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to left, orange, orangered);
+    border: 3.5px solid;
+    border-color: rgb(255, 169, 9);
+    border-radius: 6px;
+    overflow: auto;
+}
+#next{
+    height: 15%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#subnext{
+    background: grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+
+}
+#footer{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 41%;
+    width: 100%;
+    overflow: hidden;
+    font-family: 'Agency FB';
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+    top: -12px;
+
+}
+@property --angle{
+    syntax:"<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+@keyframes spin{
+    from{
+        --angle: 0deg;
+    }
+    to{
+        --angle: 360deg;
+    }
+}
+#border{
+    background: conic-gradient(from var(--angle),orange, rgb(196, 53, 53), orange);
+    height: 50px;
+    width: 100%;
+    position: relative;
+    z-index: -1;
+
+    top: -86%;
+    padding:0px;
+    border-radius: 10px;
+    animation: 5s spin linear infinite;
+}
+#border::before{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: conic-gradient(from var(--angle),orange,rgb(196, 53, 53), orange);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    padding: 1px;
+    border-radius: 10px;
+    filter: blur(2.9rem);
+    animation: 5s spin linear infinite;
+    
+}

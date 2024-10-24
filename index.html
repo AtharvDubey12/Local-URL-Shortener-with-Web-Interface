@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Url Shortener</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body><div class="heading"><h1 id="main">URL SHORTENER</h1></div>
+        <div id="formhead">
+        <input type="text" id="long_url" required placeholder="Enter a URL....">
+        <button id="submit" onclick="sendLongUrl()">Shorten</button>
+        </div>
+        <div id="border"></div>
+        <div id="next"><div id="output">The output will be visible here :)</div></div>
+        <div class="extra"><h2><br><h2>The best local URL shortener on your system, Probably.</h2></h2></div>
+        <div class="extra2"><br><br><br><br><br>Local URL Shortener (with web interface) is  a project built to learn about transfer of information among various environments <br><br>-By Atharv Dubey NITJ (IT) '28</div>
+        <div class="extra2" id="bugfix"></div>
+        <div id="footer"><h5>Local Url Shortener 2024 by Atharv Dubey <br> No Rights Reserved- Open source and free to use/modify <br>The creater is not liable to any sort of damage/loss occured due to usage of this (or a modified version of this) product</h6></div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+        document.querySelector("h1").classList.add("fade-in");
+    });
+    let websocket;
+    function connect(){
+        websocket= new WebSocket("ws://localhost:8000");
+        websocket.onopen= function(){
+            console.log("Connected to websocket server.");
+        };
+        websocket.onmessage= function(event){
+            const response= JSON.parse(event.data);
+            document.getElementById("output").innerText= `Hooray! The shortened URL is: localhost:5000/${response.output}`;
+            if (response.error){
+                console.error("Error: ", response.error);
+            }
+        };
+        websocket.onclose= function(){
+            console.log("Disconnected from websocket server.");
+        };
+    }
+    function sendLongUrl(){
+        const longUrl= document.getElementById("long_url").value;
+        const message= JSON.stringify({long_url: longUrl});
+        websocket.send(message);
+    }
+    window.onload= connect;
+</script>
+</body>
+</html>
